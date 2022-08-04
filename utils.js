@@ -3,19 +3,36 @@ export const canUseDOM = typeof window === "object";
 export function injectSchema(schema) {
     try {
         if (canUseDOM) {
-            const existingScipts = document.querySelectorAll('script');
-            const isSchemaAlreadyExists = Array.from(existingScipts).filter(script => script.type === "application/ld+json").length > 0;
+            const script = document.createElement('script');
+            script.id = 'json_ld_schema';
+            script.type = 'application/ld+json';
+            script.innerText = JSON.stringify(schema);
 
-            if (!isSchemaAlreadyExists) {
-                const script = document.createElement('script');
-                script.type = 'application/ld+json';
-                script.innerText = JSON.stringify(schema);
-
-                document.body.appendChild(script);
-            }
+            document.body.appendChild(script);
         }
     }
     catch (err) {
         console.error('Unable to inject the schema : ', err);
+    }
+};
+
+export function ejectSchema(schemaId = 'json_ld_schema') {
+    try {
+        document.querySelector(`script[id=${schemaId}]`).remove();
+    }
+    catch(err) {
+        console.error('Unable to eject the schema : ', err);
+    }
+};
+
+export function injectAndEject(schema) {
+    try {
+        injectSchema(schema);
+        setTimeout(() => {
+            ejectSchema();
+        }, 1000);
+    }
+    catch(err) {
+        console.error('Unable to injectAndEject the schema : ', err);
     }
 };
