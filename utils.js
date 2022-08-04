@@ -30,7 +30,7 @@ export function injectAndEject(schema) {
         injectSchema(schema);
         setTimeout(() => {
             ejectSchema();
-        }, 3000);
+        }, 5000);
     }
     catch(err) {
         console.error('Unable to injectAndEject the schema : ', err);
