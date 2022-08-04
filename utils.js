@@ -16,9 +16,9 @@ export function injectSchema(schema) {
     }
 };
 
-export function ejectSchema(schemaId = 'json_ld_schema') {
+export function ejectSchema() {
     try {
-        document.querySelector(`script[id=${schemaId}]`).remove();
+        document.getElementById('json_ld_schema').remove();
     }
     catch(err) {
         console.error('Unable to eject the schema : ', err);
