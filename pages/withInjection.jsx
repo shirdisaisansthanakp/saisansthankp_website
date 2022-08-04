@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import Safe from 'react-safe';
 import schema from '../schema';
-import {injectSchema} from '../utils';
+import injectSchema from 'schema_injector';
 
 export default function WithInjection() {
     useEffect(() => {
