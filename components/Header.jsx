@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Header() {
     return (
-        <header className="flex content">
-            <section>
+        <header className="d-flex justify-content-center p-1">
+            <section className="header-image-section">
                 <Image className="logo" src="/images/logo.jpg" height={75} width={75} />
             </section>
             <section className="title-section">

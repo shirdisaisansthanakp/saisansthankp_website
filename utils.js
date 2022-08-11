@@ -1,38 +1,16 @@
-export const canUseDOM = typeof window === "object";
+import {HOME_PAGE, HTML_FONT_SIZE_IN_PX} from './constants';
 
-export function injectSchema(schema) {
-    try {
-        if (canUseDOM) {
-            const script = document.createElement('script');
-            script.id = 'json_ld_schema';
-            script.type = 'application/ld+json';
-            script.innerText = JSON.stringify(schema);
+export const canUseDOM = () => typeof window === "object" && typeof window.document === "object";
 
-            document.body.appendChild(script);
-        }
-    }
-    catch (err) {
-        console.error('Unable to inject the schema : ', err);
-    }
-};
+export const getActivePage = () => canUseDOM() ? window.location.hash : HOME_PAGE;
 
-export function ejectSchema() {
-    try {
-        document.getElementById('json_ld_schema').remove();
-    }
-    catch(err) {
-        console.error('Unable to eject the schema : ', err);
-    }
-};
+export const getPxFromRem = (remUnit = 0) => {
+    let pixels;
 
-export function injectAndEject(schema) {
-    try {
-        injectSchema(schema);
-        setTimeout(() => {
-            ejectSchema();
-        }, 5000);
-    }
-    catch(err) {
-        console.error('Unable to injectAndEject the schema : ', err);
-    }
-};
+    if(remUnit)
+        pixels = remUnit * HTML_FONT_SIZE_IN_PX;
+    else 
+        pixels = canUseDOM() ? window.innerWidth : 1500;
+
+    return `${pixels}px`;
+}

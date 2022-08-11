@@ -3,6 +3,7 @@
 :root {
   --header-bg: #821A19;
   --header-subtitle: #F9DB8F;
+  --nav-background: #F9DC93;
 }
 
 /* globals */
@@ -16,27 +17,6 @@ html {
   font-size: 15px;
 }
 
-body {
-
-}
-
-/* utilities */
-.flex {
-  display: flex;
-}
-
-.justify-content-center {
-  justify-content: center;
-}
-
-.align-items-center {
-  align-items: center;
-}
-
-.content {
-  padding: 0 20%;
-}
-
 /* header */
 header {
   background-color: var(--header-bg);
@@ -44,23 +24,51 @@ header {
 
 header h1 {
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
-  letter-spacing: .3rem;
+  letter-spacing: .2rem;
   padding-top: .3rem;
   margin-bottom: 0.2rem;
+}
+
+.header-image-section {
+  margin-right: 1.2rem;
 }
 
 .logo {
   border-radius: 50%;
 }
 
-.title-section {
-  margin-left: 2rem;
-}
-
 .subtitle {
   color: var(--header-subtitle);
   font-size: 1.25rem;
   text-transform: capitalize;
+}
+
+/* navbar */
+nav {
+  background-color: var(--nav-background);
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  padding: .3rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+}
+
+nav ul li a:hover {
+  font-weight: 500;
+  color: var(--header-bg);
+}
+
+.active {
+  border-bottom: 3px solid tomato;
 }
