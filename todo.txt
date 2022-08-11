@@ -1,0 +1,3 @@
+remove github api token from code
+
+fix activePage navigation issue

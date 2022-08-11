@@ -72,3 +72,7 @@ nav ul li a:hover {
 .active {
   border-bottom: 3px solid tomato;
 }
+
+.inactive {
+  border-bottom: none;
+}
